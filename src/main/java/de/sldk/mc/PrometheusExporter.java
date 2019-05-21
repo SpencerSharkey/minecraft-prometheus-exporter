@@ -14,10 +14,10 @@ public class PrometheusExporter extends JavaPlugin {
     @Override
     public void onEnable() {
 
-        tpsPoller = new TpsPoller(this);
+        /*tpsPoller = new TpsPoller(this);
         Bukkit.getServer()
                 .getScheduler()
-                .scheduleSyncRepeatingTask(this, tpsPoller, 0, TpsPoller.POLL_INTERVAL);
+                .scheduleSyncRepeatingTask(this, tpsPoller, 0, TpsPoller.POLL_INTERVAL);*/
 
         PluginConfig.PORT.setDefault(config);
         PluginConfig.PLAYER_METRICS.setDefault(config);
@@ -57,7 +57,7 @@ public class PrometheusExporter extends JavaPlugin {
     }
 
     float getAverageTPS() {
-        return tpsPoller.getAverageTPS();
+        return (float)Bukkit.getServer().getTPS()[0];
     }
 
 }
